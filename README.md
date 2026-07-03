@@ -1,4 +1,4 @@
-# Rico-Chet 🎮
+# Orange-you-curious 🎮
 ### A first-person puzzle game
 
 ---
