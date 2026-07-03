@@ -21,22 +21,24 @@ public class EndTrigger : MonoBehaviour
 
     private bool _triggered = false;
     private GameObject _player;
+    private bool _sequenceComplete = false;
 
     private void Update()
     {
+        
+        if (!_sequenceComplete) return;
+
         if (Input.GetKeyDown(KeyCode.R))
         {
             Time.timeScale = 1f;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        if (!_triggered) return;
-
-        if (Input.GetKeyDown(KeyCode.R))
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
         if (Input.GetKeyDown(KeyCode.M))
+        {
+            Time.timeScale = 1f;
             SceneManager.LoadScene("MainMenu");
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -83,6 +85,12 @@ public class EndTrigger : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         restartButton.SetActive(true);
         menuButton.SetActive(true);
+
+        
+        yield return new WaitForSeconds(0.5f);
+        restartButton.SetActive(true);
+        menuButton.SetActive(true);
+        _sequenceComplete = true;  
     }
 
     private IEnumerator FadeImage(Image img, float from, float to, float duration)
