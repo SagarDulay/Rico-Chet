@@ -1,2 +1,10 @@
-# Auto detect text files and perform LF normalization
 * text=auto
+
+# Ignore Unity shader files for language detection
+*.shader linguist-vendored=true
+*.hlsl linguist-vendored=true
+*.cginc linguist-vendored=true
+*.cg linguist-vendored=true
+
+# Force C# as primary language
+*.cs linguist-detectable=true
